@@ -1,3 +1,4 @@
+import { AddButton } from "../components/AddButton"
 import { UserList } from "../components/UserList"
 
 
@@ -6,6 +7,7 @@ export const Users = () => {
         <section className="users">
             <section className="list">
                 <UserList/>
+                <AddButton/>
             </section>
         </section>
     )
