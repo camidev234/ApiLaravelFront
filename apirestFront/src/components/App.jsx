@@ -1,10 +1,18 @@
-function App() {
+import { Route, Routes } from "react-router-dom";
+import { IndexApp } from "../pages/IndexApp";
+import { BarNav } from "./BarNav";
 
+function App() {
   return (
     <>
-      <h1 className='text-white'>Hello world</h1>
+      <div className="barnav">
+        <BarNav/>
+      </div>
+      <Routes>
+        <Route path="/" element={<IndexApp />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
