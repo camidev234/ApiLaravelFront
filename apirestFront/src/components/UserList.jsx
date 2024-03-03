@@ -3,17 +3,22 @@ import { UserCard } from "./UserCard";
 import { getAllUsers } from "../services/userService";
 import { NoContent } from "./NoContent";
 import { LoadingAnimation } from "./LoadingAnimation";
+import { useNavigate } from "react-router-dom";
 
 export const UserList = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [codeStatus, setCodeStatus] = useState(200);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
       const getUsers = async () => {
         setIsLoading(true);
         const responseUsers = await getAllUsers();
+        if(responseUsers === undefined) {
+          navigate('/error500');
+        }
         if (responseUsers.status !== 204) {
           setUsers(responseUsers.data.users);
         } else {
@@ -24,9 +29,9 @@ export const UserList = () => {
 
       getUsers();
     } catch (error) {
-      console.log(error);
+      navigate('/error500');
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <section className="list w-full h-[88vh] p-5 overflow-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">

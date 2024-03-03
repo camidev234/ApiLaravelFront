@@ -25,5 +25,7 @@ export const findUserById = async (id) => {
     return response;
   } catch (error) {
     console.log(error);
+    console.log('error desde servicio');
+    throw error;
   }
 };

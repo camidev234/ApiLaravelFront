@@ -3,17 +3,22 @@ import { getAllOccupations } from "../services/occupationService";
 import { NoContent } from "./NoContent";
 import { OccupationCard } from "./OccupationCard";
 import { LoadingAnimation } from "./LoadingAnimation";
+import { useNavigate } from "react-router-dom";
 
 export const OccupationList = () => {
   const [occupations, setOccupations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [code, setCode] = useState(200);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
       const getOccupations = async () => {
         setIsLoading(true);
         const response = await getAllOccupations();
+        if(response === undefined) {
+          navigate('/error500');
+        }
         if (response.status !== 204) {
           setOccupations(response.data.occupations);
         } else {
@@ -27,7 +32,7 @@ export const OccupationList = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <section className="list w-full h-[88vh] p-5 overflow-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">

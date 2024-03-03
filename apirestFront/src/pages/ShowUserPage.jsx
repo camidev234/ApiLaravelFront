@@ -10,4 +10,4 @@ export const ShowUserPage = () => {
             <ShowUser id={parseInt(id)}/>
         </section>
     )
-}
+}   
