@@ -29,3 +29,23 @@ export const findUserById = async (id) => {
     throw error;
   }
 };
+
+export const insertUser = async (user) => {
+  try {
+    const { role_id } = user;
+    const role = parseInt(role_id);
+    const newUser = { ...user, role_id: role };
+    const url = "http://127.0.0.1:8000/api/user/store";
+    const response = await axios.post(url, newUser, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    if (error.response.data.errors) {
+      throw error.response.data.errors;
+    }
+  }
+};
