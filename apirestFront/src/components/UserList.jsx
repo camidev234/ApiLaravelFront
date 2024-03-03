@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { UserCard } from "./UserCard";
 import { getAllUsers } from "../services/userService";
 import { NoContent } from "./NoContent";
+import { LoadingAnimation } from "./LoadingAnimation";
 
 export const UserList = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [ codeStatus, setCodeStatus ] = useState(200);
+  const [codeStatus, setCodeStatus] = useState(200);
 
   useEffect(() => {
     try {
@@ -16,7 +17,7 @@ export const UserList = () => {
         if (responseUsers.status !== 204) {
           setUsers(responseUsers.data.users);
         } else {
-            setCodeStatus(responseUsers.status);
+          setCodeStatus(responseUsers.status);
         }
         setIsLoading(false);
       };
@@ -34,19 +35,26 @@ export const UserList = () => {
           <NoContent />
         </div>
       ) : (
-        users.map((user) => {
-          return (
-            <div key={user.id} className="">
-              <UserCard
-                id={parseInt(user.id)}
-                name={user.name}
-                last_name={user.last_name}
-                role={user.role}
-                isloading={isLoading}
-              />
-            </div>
-          );
-        })
+        <div>
+          {isLoading ? (
+            <section className=" w-[70%] m-auto flex gap-6 flex-col">
+              <LoadingAnimation />
+            </section>
+          ) : (
+            users.map((user) => {
+              return (
+                <div key={user.id} className="">
+                  <UserCard
+                    id={parseInt(user.id)}
+                    name={user.name}
+                    last_name={user.last_name}
+                    role={user.role}
+                  />
+                </div>
+              );
+            })
+          )}
+        </div>
       )}
     </section>
   );

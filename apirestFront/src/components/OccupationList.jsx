@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllOccupations } from "../services/occupationService";
 import { NoContent } from "./NoContent";
 import { OccupationCard } from "./OccupationCard";
+import { LoadingAnimation } from "./LoadingAnimation";
 
 export const OccupationList = () => {
   const [occupations, setOccupations] = useState([]);
@@ -35,18 +36,25 @@ export const OccupationList = () => {
           <NoContent />
         </div>
       ) : (
-        occupations.map((occupation) => {
-          return (
-            <div key={occupation.id} className="">
-              <OccupationCard
-                id={parseInt(occupation.id)}
-                code={occupation.occupation_code}
-                name={occupation.occupation_name}
-                isLoading={isLoading}
-              />
-            </div>
-          );
-        })
+        <div>
+          {isLoading ? (
+            <section className=" w-[60%] m-auto flex gap-6 flex-col">
+              <LoadingAnimation />
+            </section>
+          ) : (
+            occupations.map((occupation) => {
+              return (
+                <div key={occupation.id} className="">
+                  <OccupationCard
+                    id={parseInt(occupation.id)}
+                    code={occupation.occupation_code}
+                    name={occupation.occupation_name}
+                  />
+                </div>
+              );
+            })
+          )}
+        </div>
       )}
     </section>
   );

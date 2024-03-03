@@ -4,6 +4,7 @@ import { BarNav } from "./BarNav";
 import { Users } from "../pages/Users";
 import { ShowUserPage } from "../pages/ShowUserPage";
 import { Occupations } from "../pages/Occupations";
+import { ShowOccupationPage } from "../pages/ShowOccupationPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/user/:id" element={<ShowUserPage/>}/>
         <Route path="/occupations" element={<Occupations/>}/>
+        <Route path="/occupation/:id" element={<ShowOccupationPage/>}/>
       </Routes>
     </>
   );
