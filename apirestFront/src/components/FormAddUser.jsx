@@ -10,6 +10,8 @@ export const FormAddUser = ({ roles }) => {
   const inputStyles =
     "bg-transparent border-b border-b-2 border-b-gray-400 focus:outline-none focus:border-b-gray-300";
 
+  const ast = "text-red-500";
+
   // input states
   const [user, setUser] = useState({
     name: "",
@@ -60,7 +62,7 @@ export const FormAddUser = ({ roles }) => {
           </article>
           <article className={articleStyles}>
             <div className={divStyles}>
-              <label htmlFor="name">Nombre</label>
+              <label htmlFor="name">Nombre <span className={ast}>*</span></label>
               <input
                 type="text"
                 className={inputStyles}
@@ -72,7 +74,7 @@ export const FormAddUser = ({ roles }) => {
               <ErrorMessage message={errors.name} />
             </div>
             <div className={divStyles}>
-              <label htmlFor="last_name">Apellidos</label>
+              <label htmlFor="last_name">Apellidos <span className={ast}>*</span></label>
               <input
                 type="text"
                 className={inputStyles}
@@ -86,7 +88,7 @@ export const FormAddUser = ({ roles }) => {
           </article>
           <article className={articleStyles}>
             <div className={divStyles}>
-              <label htmlFor="document_type">Tipo De Documento</label>
+              <label htmlFor="document_type">Tipo De Documento <span className={ast}>*</span></label>
               <select
                 name="document_type"
                 id="document_type"
@@ -101,7 +103,7 @@ export const FormAddUser = ({ roles }) => {
               </select>
             </div>
             <div className={divStyles}>
-              <label htmlFor="number_document">Numero De Documento</label>
+              <label htmlFor="number_document">Numero De Documento <span className={ast}>*</span></label>
               <input
                 type="text"
                 className={inputStyles}
@@ -133,7 +135,7 @@ export const FormAddUser = ({ roles }) => {
               <ErrorMessage message={errors.telephone} />
             </div>
             <div className={divStyles}>
-              <label htmlFor="phone_number">Celular</label>
+              <label htmlFor="phone_number">Celular <span className={ast}>*</span></label>
               <input
                 type="text"
                 className={inputStyles}
@@ -148,7 +150,7 @@ export const FormAddUser = ({ roles }) => {
           </article>
           <article>
             <div className="w-full text-gray-300">
-              <label htmlFor="email">Correo Electronico</label>
+              <label htmlFor="email">Correo Electronico <span className={ast}>*</span></label>
               <input
                 type="email"
                 className={inputStyles}
@@ -167,7 +169,7 @@ export const FormAddUser = ({ roles }) => {
         <section className="personal flex flex-col gap-4 mt-3 h-[32%]">
           <article className={articleStyles}>
             <div className={divStyles}>
-              <label htmlFor="address">Direccion</label>
+              <label htmlFor="address">Direccion <span className={ast}>*</span></label>
               <input
                 type="text"
                 className={inputStyles}
@@ -179,7 +181,7 @@ export const FormAddUser = ({ roles }) => {
               <ErrorMessage message={errors.address} />
             </div>
             <div className={divStyles}>
-              <label htmlFor="birthdate">Fecha De Nacimiento</label>
+              <label htmlFor="birthdate">Fecha De Nacimiento <span className={ast}>*</span></label>
               <input
                 type="date"
                 className={inputStyles}
@@ -192,7 +194,7 @@ export const FormAddUser = ({ roles }) => {
           </article>
           <article className={articleStyles}>
             <div className={divStyles}>
-              <label htmlFor="role_id">Rol</label>
+              <label htmlFor="role_id">Rol <span className={ast}>*</span></label>
               <select
                 name="role_id"
                 id="role_id"
@@ -208,7 +210,7 @@ export const FormAddUser = ({ roles }) => {
               </select>
             </div>
             <div className={divStyles}>
-              <label htmlFor="password">Contraseña</label>
+              <label htmlFor="password">Contraseña <span className={ast}>*</span></label>
               <div className="flex border-b-2 border-b-gray-300">
                 <input
                   type={

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoAdd } from "react-icons/io5";
 import { ModalUser } from "./ModalUser";
 import { Modal } from "./Modal";
+import { ModalOccupation } from "./ModalOccupation";
 
 export const AddButton = () => {
   const currentPath = window.location.pathname;
@@ -27,7 +28,17 @@ export const AddButton = () => {
               <ModalUser onSetModal={closeModal}/>
             </Modal>
           </div>
-        ) : null
+        ) : (
+          <div>
+            {
+              modalShow && currentPath == '/occupations' ? (
+                <Modal>
+                  <ModalOccupation onSetModal={closeModal}/>
+                </Modal>
+              ) : null
+            }
+          </div>
+        )
       }
     </section>
   );

@@ -38,7 +38,7 @@ export const insertUser = async (user) => {
     const url = "http://127.0.0.1:8000/api/user/store";
     const response = await axios.post(url, newUser, {
       headers: {
-        Accept: "application/json",
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
     });
