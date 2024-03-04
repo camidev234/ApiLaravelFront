@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const getAllUsers = async () => {
   try {
-    const url = "http://127.0.0.1:8000/api/user/index";
+    // const url = "http://127.0.0.1:8000/api/user/index";
+    const url = "https://raqqobo.nyc.dom.my.id/api/user/index";
     const response = await axios.get(url, {
       headers: {
         "Content-Type": "application/json",
@@ -16,7 +17,8 @@ export const getAllUsers = async () => {
 
 export const findUserById = async (id) => {
   try {
-    const url = `http://127.0.0.1:8000/api/user/show/${id}`;
+    // const url = `http://127.0.0.1:8000/api/user/show/${id}`;
+    const url = `https://raqqobo.nyc.dom.my.id/api/user/show/${id}`;
     const response = await axios.get(url, {
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +37,8 @@ export const insertUser = async (user) => {
     const { role_id } = user;
     const role = parseInt(role_id);
     const newUser = { ...user, role_id: role };
-    const url = "http://127.0.0.1:8000/api/user/store";
+    // const url = "http://127.0.0.1:8000/api/user/store";
+    const url = "https://raqqobo.nyc.dom.my.id/api/user/store";
     const response = await axios.post(url, newUser, {
       headers: {
         "Accept": "application/json",

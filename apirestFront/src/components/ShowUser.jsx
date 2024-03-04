@@ -56,7 +56,7 @@ export const ShowUser = ({ id }) => {
         </span>
         <span>
           <strong>Tipo de documento: </strong>
-          {user.document_type == "CC" ? "Cedula de Ciudadania" : null}
+          {user.document_type == "CC" ? "Cedula de Ciudadania" : user.document_type}
         </span>
         <span>
           <strong>Numero de documento: </strong>
